@@ -1,0 +1,10 @@
+section{
+    width: 60%;
+     display: grid;
+     grid-template-columns: repeat(4, 1fr);
+     gap: 40px;
+    margin: auto;
+    margin-top: 60px;
+    align-items: center;
+    justify-content: center;text-align: center;
+}

@@ -1,0 +1,101 @@
+mat-card {
+    width: 400px;
+    background-color: white;
+    padding: 12px 24px;
+    cursor: pointer;
+    /* */
+    border-radius: 10px;
+    max-height: 600px;
+    box-shadow: 0 0 5px black;
+}
+mat-card-header{
+    margin: auto;
+    color: #000000;
+}
+mat-card-content{
+    color: #000000;
+}
+mat-card:hover{
+    box-shadow: 0px 0px 12px rgb(0, 0, 0);
+     border: 1px solid black;
+}
+button{
+    width: fit-content;
+    padding: 12px 24px;
+    font-size: 1.3rem;
+    margin: auto;
+    border: 1px solid #000000;
+    background-color: transparent;
+    color:#000000;
+    cursor: pointer;
+    margin-top: 30px;
+}
+span{
+ display: inline-block;
+  transition: transform 0.3s ease;
+}
+span:hover{
+
+    transform: translateX(5px);
+}
+
+mat-card-content{
+    margin: auto;
+}
+img {
+  height: 200px;        /* fixed height */
+  width: 100%;          /* make it fill card width */
+  object-fit: cover;    /* crop to fill instead of stretching */
+  margin: 30px;
+} 
+
+
+
+.carousel {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 70px;
+}
+
+.carousel img {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  
+}
+
+.nav {
+  position: absolute;
+  font-size:40px;
+  color: rgb(0, 0, 0);
+  font-weight: 900;
+  border: none;
+  z-index: 999;
+  width: fit-content;
+  border-radius: 90%;
+  
+
+  
+
+}
+
+.nav.left {
+  left: 0;
+   top:30px;
+}
+
+.nav.right {
+   right: 0;
+   top:30px;
+
+  /* bottom: 10px; */
+}
+
+mat-card-content p {
+
+    text-align: justify;
+}

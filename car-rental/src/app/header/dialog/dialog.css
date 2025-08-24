@@ -1,0 +1,48 @@
+.mat-dialog-content{
+  width: fit-content;
+  height: fit-content;
+  /* padding: 50px 150px; */
+  box-sizing: border-box;
+
+}
+h1{
+     
+    margin-bottom: 20px;
+}
+
+
+
+form{
+    width: 260px;
+    
+    height: auto;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:20px;
+
+
+}
+
+mat-form-field {
+    width: 100%;
+    margin-top: 30px;
+    margin: auto;
+}
+button{
+
+    padding: 12px 20px;
+    font-size: 1rem;
+    margin-left: 5px;
+    background-color: black;
+    color: white;
+
+}
+.mat-dialog-actions{
+
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    gap: 20px;
+}

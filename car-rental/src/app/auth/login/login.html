@@ -1,0 +1,31 @@
+<div class="container">
+     <div class="have-account">
+        <h5>Not registered yet</h5>
+        <a [routerLink]="['/signup']" routerLinkActive="router-link-active"  >creat an account</a>
+   </div>
+    <h1>Log in</h1>
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)" >
+        <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input matInput name="email" email required ngModel  #emailInput="ngModel">
+            <mat-error *ngIf="emailInput.hasError('required')">Field must not be empty</mat-error>
+            <mat-error *ngIf="!emailInput.hasError('required')">Email is invalid</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Enter your password</mat-label>
+            <input matInput [type]="hide() ? 'password' : 'text'" name="password" ngModel #pwInput="ngModel" password  required minlength="6"  />
+            <mat-hint align="end">{{pwInput.value?.length}}/6</mat-hint>
+            <button class="visibilityBtn" type="button" matSuffix (click)="clickEvent($event)" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide()">
+                <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+        
+        </mat-form-field>
+
+        <button type="submit"  [disabled]="f.invalid ">Login</button>
+    </form>
+    <hr>
+
+    <mat-spinner *ngIf="loading()" diameter="100"></mat-spinner>
+
+</div>

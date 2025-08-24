@@ -1,0 +1,32 @@
+.side-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 90px;
+  
+    height: 100%;
+    width: 70px;
+   
+    top: 400px;
+    position: sticky;
+}
+
+.container {
+
+    display: flex;
+    flex-direction: row;
+    gap: 60px;
+    box-sizing: border-box;
+
+}
+
+button{
+    padding: 12px 24px;
+    width: max-content;
+    font-size: 1.5rem;
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+ 
+
+}

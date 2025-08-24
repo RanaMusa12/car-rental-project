@@ -1,0 +1,93 @@
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Adds spacing between form fields */
+    width: 100%;
+    max-width: 800px; 
+    margin: 0 auto; /* Center form horizontally */
+    
+    align-items: center;
+    text-align: left;
+   
+}
+
+.container {
+    margin: 100px auto 0;
+    background-color: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 0 12px #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    
+    width: 90%;  
+    height: fit-content;          /* Makes it responsive */
+    max-width: 500px;        /* Limits it on large screens */
+    box-sizing: border-box;
+    
+}
+
+
+mat-form-field {
+    width: 100%;
+}
+
+mat-checkbox {
+    align-self: start;
+    margin-top: 10px;
+}
+
+button[type="submit"] {
+    margin-top: 20px;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-size: 1.3rem;
+    background-color: rgb(167, 167, 255);
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 0 4px #4032c0;
+}
+
+hr {
+    width: 100%;
+    margin: 30px 0;
+}
+
+:host ::ng-deep .mat-mdc-form-field .mdc-text-field--filled {
+  background-color: transparent !important;
+}
+.visibilityBtn{
+    background-color: transparent;
+    border: none;
+}
+
+img{
+    width: 50px;
+}
+
+
+:host ::ng-deep .mat-mdc-checkbox label{
+
+    font-size: 1.1rem;
+    color: #333;
+}
+
+:host ::ng-deep .mat-mdc-floating-label.mdc-floating-label{
+
+    font-size: 1.2rem !important;
+
+}
+
+.have-account{
+
+    display: flex;
+    
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    font-weight: none;
+    gap: 5px;
+    
+}

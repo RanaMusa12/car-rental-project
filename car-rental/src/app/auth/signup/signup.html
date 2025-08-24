@@ -1,0 +1,35 @@
+<div class="container">
+   <div class="have-account">
+        <h5>Already have an account</h5>
+        <a [routerLink]="['/login']" routerLinkActive="router-link-active"  >SignIn</a>
+   </div>
+    <h1>Create an account</h1>
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+         <mat-form-field>
+            <mat-label>Name</mat-label>
+            <input matInput name="name"  required ngModel  #namelInput="ngModel">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input matInput name="email" email required ngModel  #emailInput="ngModel">
+            <mat-error *ngIf="emailInput.hasError('required')">Field must not be empty</mat-error>
+            <mat-error *ngIf="!emailInput.hasError('required')">Email is invalid</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Enter your password</mat-label>
+            <input matInput [type]="hide() ? 'password' : 'text'" name="password" ngModel #pwInput="ngModel" password  required minlength="6"  />
+            <mat-hint align="end">{{pwInput.value?.length}}/6</mat-hint>
+            <button class="visibilityBtn" type="button" matSuffix (click)="clickEvent($event)" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide()">
+                <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+        
+        </mat-form-field>
+            
+        <mat-checkbox  name="checkbox" required ngModel  #checkBoxInput="ngModel">you accept the privacy policy and terms of use </mat-checkbox>
+        <button type="submit"  [disabled]="f.invalid ">Sing up</button>
+    </form>
+    <hr>
+    <mat-spinner *ngIf="loading()"></mat-spinner>
+
+</div>

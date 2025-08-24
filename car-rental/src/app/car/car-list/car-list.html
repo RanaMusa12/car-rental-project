@@ -1,0 +1,5 @@
+<section>
+    <div *ngFor="let car of cars$ | async">
+        <app-car [car]="car"></app-car>
+    </div>
+</section>

@@ -1,0 +1,36 @@
+
+<mat-card class="example-card" appearance="outlined">
+  <mat-card-header>
+    <mat-card-title>{{ car?.name }}</mat-card-title>
+  </mat-card-header>
+
+  <!-- Carousel -->
+  <div class="carousel">
+    <button mat-button class="nav left" (click)="prevImage()">
+      <mat-icon>arrow_back_ios</mat-icon>
+    </button>
+
+    <img
+      mat-card-image
+      [src]="car?.images?.[currentIndex]"
+      [alt]="car?.name"
+    />
+
+    <button mat-button class="nav right" (click)="nextImage()">
+      <mat-icon>arrow_forward_ios</mat-icon>
+    </button>
+  </div>
+
+  <mat-card-content>
+    <p>{{ car?.details }}</p>
+    <h2>{{ car?.cost }} ₪</h2>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-raised-button color="primary">
+      <span>
+        Rent car →
+      </span>
+    </button>
+  </mat-card-actions>
+</mat-card>
