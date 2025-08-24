@@ -1,11 +1,9 @@
 mat-card {
-    width: 400px;
+    width: 300px;
     background-color: white;
     padding: 12px 24px;
     cursor: pointer;
-    /* */
     border-radius: 10px;
-    max-height: 600px;
     box-shadow: 0 0 5px black;
 }
 mat-card-header{
@@ -43,7 +41,7 @@ mat-card-content{
     margin: auto;
 }
 img {
-  height: 200px;        /* fixed height */
+  height: 150px;        /* fixed height */
   width: 100%;          /* make it fill card width */
   object-fit: cover;    /* crop to fill instead of stretching */
   margin: 30px;
