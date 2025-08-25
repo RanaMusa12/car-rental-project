@@ -14,20 +14,25 @@ import {MatInputModule} from '@angular/material/input';
 import { NgForm } from '@angular/forms';
 import { CarService } from '../../car/car.service';
 import { Car } from '../../car/car.model';
+import { AuthService } from '../../auth/auth.service';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
   selector: 'app-dialog',
   templateUrl: './dialog.html',
   standalone: true,
-  imports: [MatDialogTitle, MatDialogContent, MatDialogActions, 
+  imports: [MatDialogTitle, MatDialogContent, MatDialogActions, CommonModule,
     MatDialogClose, FormsModule,MatFormFieldModule,MatIconModule,MatInputModule],
   styleUrls: ['./dialog.css'],
 })
 export class Dialog {
   readonly dialogRef = inject(MatDialogRef<Dialog>);
   
-  constructor(private carService : CarService){}
+  constructor(
+    private carService : CarService,
+    
+  ){}
 
   onNoClick(): void {
     this.dialogRef.close();

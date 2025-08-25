@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import { Auth, updateProfile, user } from '@angular/fire/auth';
-import { from, Observable } from 'rxjs';
+import { from, Observable, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,29 +9,37 @@ import { from, Observable } from 'rxjs';
 export class AuthService {
 
   firebaseAuth = inject(Auth);
+  private readonly ADMIN_UID = 'D38m05VXtCSVF0FwQiyHRP9vQHz2';
 
-  register(email: string, username: string, password: string){
-    // create user with email and password
+  user$: Observable<any>;
+
+  isAdmin$: Observable<boolean>;
+  isLoggedIn$: Observable<boolean>;
+
+  constructor(private auth: Auth) {
+    this.user$ = user(this.auth);
+
+    this.isAdmin$ = this.user$.pipe(
+      map(u => !!u && u.uid === this.ADMIN_UID)
+    );
+    this.isLoggedIn$ = this.user$.pipe(
+    map(u => !!u)
+  );
+  }
+
+  register(email: string, username: string, password: string) {
     const promise = createUserWithEmailAndPassword(this.firebaseAuth, email, password);
-
-
-     
     return from(promise);
   }
 
-    login(email:string, password:string){
-
-    const promise= signInWithEmailAndPassword(this.firebaseAuth, email, password);
+  login(email: string, password: string) {
+    const promise = signInWithEmailAndPassword(this.firebaseAuth, email, password);
     return from(promise);
-
   }
-    logout(): Observable<void>{
 
+  logout(): Observable<void> {
     const promise = signOut(this.firebaseAuth);
+    console.log("logged out");
     return from(promise);
-
   }
-
-
-  
 }

@@ -1,0 +1,31 @@
+<div class="car-page" *ngIf="car$ | async as car">
+  <header>
+    <h1>{{ car.name }}   {{ car.cost }} ₪</h1>
+    <button *ngIf="authService.isAdmin$ |async" (click)="openEditDialog(car)">Edit</button>
+    <button *ngIf="authService.isAdmin$ |async" (click)="onDelete(car.id)">Delete</button>
+    <button *ngIf="!(authService.isAdmin$ |async) && (authService.isLoggedIn$ | async)" (click)="openDialog(car)">Rent</button>
+  </header>
+
+  <div class="carousel">
+    <button mat-button class="nav left" (click)="prevImage(car)">
+      <mat-icon>arrow_back_ios</mat-icon>
+    </button>
+
+    <div class="images-container">
+      <img
+        mat-card-image
+        [src]="car?.images?.[currentIndex]"
+        [alt]="car?.name"
+      />
+    </div>
+
+    <button mat-button class="nav right" (click)="nextImage(car)">
+      <mat-icon>arrow_forward_ios</mat-icon>
+    </button>
+  </div>
+
+  <div class="details">
+    <p>{{ car.details }}</p>
+    
+  </div>
+</div>

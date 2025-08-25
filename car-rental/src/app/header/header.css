@@ -13,6 +13,7 @@ header{
      z-index: 1000;
      padding: 20px 5px;
     box-sizing: border-box;
+
     
 }
 
@@ -25,6 +26,7 @@ ul{
     display: flex;
     gap:40px;
     margin-left: auto;
+    align-items: center;
 }
 a{
     text-decoration: none;
@@ -72,10 +74,16 @@ p{
     width: 100%;
 }
 
-span{
+.logo{
      font-family: "Rubik Distressed", system-ui;
   font-weight: 400;
   font-style: normal;
   font-size: 3rem;
+  background-color: transparent;
+  color: black;
  
+}
+img{
+    width: 100px;
+    height: fit-content;
 }

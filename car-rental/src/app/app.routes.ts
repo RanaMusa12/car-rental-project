@@ -3,11 +3,13 @@ import { Signup } from './auth/signup/signup';
 import { Login } from './auth/login/login';
 import { CarItem } from './car/car';
 import { CarList } from './car/car-list/car-list';
+import { CarPage } from './car/car-page/car-page';
 
 export const routes: Routes = [
     {
         path:'',
-        component:CarList
+        component:CarList,
+   
     },
     {
         path:'signup',
@@ -20,5 +22,9 @@ export const routes: Routes = [
     {
         path:'main',
         component:CarItem
+    },
+    {
+        path:'car/:id',
+        component:CarPage
     }
 ];

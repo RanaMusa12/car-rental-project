@@ -1,8 +1,8 @@
 <app-header></app-header>
 <div class="container">
     <div class="side-nav">
-        <button>All Cars</button>
-        <button>History</button>
+        <button *ngIf= "(authService.isLoggedIn$ | async)">All Cars</button>
+        <button *ngIf= "(authService.isLoggedIn$ | async)" >History</button>
     </div>
     <router-outlet></router-outlet>
 </div>

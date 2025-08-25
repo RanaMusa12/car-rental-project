@@ -8,16 +8,22 @@ import {
   MatDialogClose,
 } from '@angular/material/dialog';
 import { Dialog } from './dialog/dialog';
+import { CommonModule } from '@angular/common';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterLink, MatDialogTitle, MatDialogContent, MatDialogActions, MatDialogClose],
+  imports: [RouterLink, MatDialogTitle, MatDialogContent, MatDialogActions, MatDialogClose, CommonModule],
   templateUrl: './header.html',
   styleUrls: ['./header.css']
 })
 export class Header {
   private dialog = inject(MatDialog);
+
+  constructor(
+    public authService: AuthService
+  ){}
 
   openDialog(): void {
     const dialogRef = this.dialog.open(Dialog, {
@@ -27,5 +33,9 @@ export class Header {
     dialogRef.afterClosed().subscribe(result => {
       console.log('Dialog closed with result:', result);
     });
+  }
+
+  onLogOut(){
+    this.authService.logout();
   }
 }

@@ -8,7 +8,7 @@ import { CarItem } from "../car";
 
 @Component({
   selector: 'app-car-list',
-  imports: [CommonModule, CarItem],
+  imports: [CommonModule, CarItem,],
   templateUrl: './car-list.html',
   styleUrl: './car-list.css'
 })
