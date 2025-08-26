@@ -4,6 +4,7 @@ import { Login } from './auth/login/login';
 import { CarItem } from './car/car';
 import { CarList } from './car/car-list/car-list';
 import { CarPage } from './car/car-page/car-page';
+import { History } from './history/history';
 
 export const routes: Routes = [
     {
@@ -26,5 +27,9 @@ export const routes: Routes = [
     {
         path:'car/:id',
         component:CarPage
+    },
+    {
+        path:'history',
+        component: History
     }
 ];

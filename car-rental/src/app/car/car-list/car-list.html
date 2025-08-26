@@ -1,5 +1,7 @@
+<img src="https://4kwallpapers.com/images/walls/thumbs_3t/23614.jpg">
 <section>
     <div *ngFor="let car of cars$ | async">
         <app-car [car]="car"></app-car>
     </div>
+    <mat-spinner *ngIf="loading()" diameter="200"></mat-spinner>
 </section>

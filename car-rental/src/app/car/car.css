@@ -5,6 +5,17 @@ mat-card {
     cursor: pointer;
     border-radius: 10px;
     box-shadow: 0 0 5px black;
+    box-sizing: border-box;
+}
+.disabled {
+  opacity: 0.5;          
+  pointer-events: none;  
+}
+.isAvailable-today{
+  font-weight: bold;
+  color: red;
+  filter: none;
+  opacity: 1;
 }
 mat-card-header{
     margin: auto;
@@ -47,8 +58,6 @@ img {
   margin: 30px;
 } 
 
-
-
 .carousel {
   position: relative;
   display: flex;
@@ -72,7 +81,7 @@ img {
   color: rgb(0, 0, 0);
   font-weight: 900;
   border: none;
-  z-index: 999;
+  z-index: 2;
   width: fit-content;
   border-radius: 90%;
   

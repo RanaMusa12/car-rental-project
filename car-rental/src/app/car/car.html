@@ -1,5 +1,5 @@
 
-<mat-card class="example-card" appearance="outlined" (click)="onOpenPage(car)"  >
+<mat-card class="example-card" appearance="outlined" (click)="onOpenPage(car)" [class.disabled]="isAvailableToday === false" >
   <mat-card-header>
     <mat-card-title>{{ car?.name }}</mat-card-title>
   </mat-card-header>
@@ -15,6 +15,7 @@
       [src]="car?.images?.[currentIndex]"
       [alt]="car?.name"
     />
+    
 
     <button mat-button class="nav right" (click)="nextImage($event)">
       <mat-icon>arrow_forward_ios</mat-icon>
@@ -22,8 +23,9 @@
   </div>
 
   <mat-card-content>
-    <p>{{ car?.details }}</p>
+    <!-- <p>{{ car?.details }}</p> -->
     <h2>{{ car?.cost }} ₪</h2>
+    <p *ngIf="isAvailableToday === false" class="isAvailable-today"> Not available for today</p>
   </mat-card-content>
 
   <mat-card-actions>

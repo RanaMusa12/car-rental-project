@@ -1,0 +1,14 @@
+.container {
+  width: 100%;        /* make container take full width */
+  height: auto;
+  display: flex;
+  justify-content: center; /* centers horizontally */
+  align-items: center;     /* centers vertically if container has height */
+  margin: auto;
+  box-sizing: border-box;
+}
+
+table {
+  /* margin-left: 600px; optional, but keep it neat */
+  margin-top: 60px;
+}

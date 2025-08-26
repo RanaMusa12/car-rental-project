@@ -1,24 +1,34 @@
-import { Component, input, Input} from '@angular/core';
+import { Component, input, Input, OnInit} from '@angular/core';
 import {MatCardModule} from '@angular/material/card';
 import { Car } from './car.model';
 import { MatIcon } from '@angular/material/icon';
 import { Router } from '@angular/router';
 import  {CarService} from '../car/car.service'
+import { RentService } from '../history/rent.service';
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-car',
-  imports: [MatCardModule, MatIcon],
+  imports: [MatCardModule, MatIcon, CommonModule],
   templateUrl: './car.html',
   styleUrl: './car.css'
 })
-export class CarItem {
+export class CarItem implements OnInit {
 
- @Input() car!: Car;
+ @Input() car!: Car ;
 
-  constructor(private router : Router , private carService:CarService){
+  constructor(private router : Router , private carService:CarService, private rentService: RentService){
   
   }
 
   currentIndex = 0;
+ 
+ isAvailableToday: boolean | null = null;
+  
+ngOnInit() {
+  this.rentService.isCarAvailableToday(this.car.id).then(available => {
+    this.isAvailableToday = available;
+  });
+}
   
 
 

@@ -1,26 +1,31 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { Car } from '../car.model';
 import { CarService } from '../car.service';
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { CarItem } from "../car";
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 
 @Component({
   selector: 'app-car-list',
-  imports: [CommonModule, CarItem,],
+  imports: [CommonModule, CarItem,MatProgressSpinnerModule],
   templateUrl: './car-list.html',
   styleUrl: './car-list.css'
 })
 export class CarList {
 
    cars$: Observable<Car[]>;
+   loading = signal(true);
 
 constructor(carService: CarService) {
+  this.loading.set(true);
   this.cars$ = carService.getCars();
 
-  // Debug log without breaking async pipe
-  this.cars$.subscribe(cars => console.log(cars));
+  this.cars$.subscribe(cars => {
+    console.log(cars);
+    this.loading.set(false);  // stop spinner once data arrives
+  });
 }
 
   

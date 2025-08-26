@@ -1,11 +1,34 @@
 section{
     width: 100%;
      display: grid;
-     grid-template-columns: repeat(5,350px);
-     gap: 40px;
+     grid-template-columns: repeat(6,1fr);
+     gap: 10px;
+     box-sizing: border-box;
+     padding: 30px;
 
     margin: auto;
     align-items: center;
     justify-content: center;text-align: center;
+
+}
+
+mat-spinner {
+  display: block;
+  margin: 50% 50%; 
+  margin: auto;
+}
+img{
+    width: 100%;
+    height: auto;
+}
+@media (max-width: 480px){
+ section{
+      grid-template-columns: repeat(1,1fr);
+      margin: auto;
+      box-sizing: border-box;
+      padding: 60px;
+
+ }
+
 
 }

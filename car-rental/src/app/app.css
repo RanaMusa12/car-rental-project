@@ -1,34 +1,90 @@
-.side-nav {
+
+.sidenav-container {
+  height: 100vh;
+  width: 100%;
+  
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding-bottom: 60px;
+  padding-top: 60px;
+  background-color: rgb(255, 255, 255);
+  top: 0;
+  position: sticky;
+  z-index: 999;
+  border-bottom: 1px solid black;
+  align-items: center;
+}
+
+.logo-img {
+  height: auto;
+  width: 100px;
+  /* width: 40%; */
+  margin-right: 8px;
+}
+
+.logo {
+      font-family: "Rubik Distressed", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 100%;
+  background-color: transparent;
+  text-decoration: none;
+  color: black;
+ 
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.content {
+  /* padding: 30px; */
+  box-sizing: border-box;
+  background-color: white;
+}
+mat-nav-list{
+    width: 300px;
     display: flex;
     flex-direction: column;
-    gap: 90px;
-  
-    height: 100%;
-    width: 70px;
-   
-    top: 400px;
-    position: sticky;
 }
+.side-nav-button{
 
-.container {
-
-    display: flex;
-    flex-direction: row;
-    gap: 50px;
-    box-sizing: border-box;
-    width: 100%;
-    margin: auto;
+    height:100px;
+    background-color: rgb(231, 228, 224);
+    font-size: 1.3rem;
+    margin-bottom: 10px;
 
 }
-
-button{
-    padding: 12px 24px;
-    width: max-content;
-    font-size: 1.5rem;
+a, .button-style{
+    padding: 20px;
     background-color: black;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
- 
+    font-size: 85%;
+    box-sizing: border-box;
+    margin-right: 10px;
+}
+.button-logout{
+    background-color: red;
+}
 
+mat-icon{
+
+  font-size: 25px;
+  width: fit-content;
+  height: auto;
+
+}
+.menu-button{
+
+    margin-right: 30px;
+}
+mat-toolbar{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }

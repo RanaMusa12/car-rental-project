@@ -16,6 +16,7 @@ import { CarService } from '../../car/car.service';
 import { Car } from '../../car/car.model';
 import { AuthService } from '../../auth/auth.service';
 import { CommonModule } from '@angular/common';
+import { Dialog } from '@angular/cdk/dialog';
 
 
 @Component({
@@ -26,7 +27,7 @@ import { CommonModule } from '@angular/common';
     MatDialogClose, FormsModule,MatFormFieldModule,MatIconModule,MatInputModule],
   styleUrls: ['./dialog.css'],
 })
-export class Dialog {
+export class AddDialog {
   readonly dialogRef = inject(MatDialogRef<Dialog>);
   
   constructor(

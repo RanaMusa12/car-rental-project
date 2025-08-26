@@ -1,13 +1,13 @@
 <div class="car-page" *ngIf="car$ | async as car">
   <header>
-    <h1>{{ car.name }}   {{ car.cost }} ₪</h1>
+    <h1>{{ car.name }}  |  {{ car.cost }} ₪</h1>
     <button *ngIf="authService.isAdmin$ |async" (click)="openEditDialog(car)">Edit</button>
     <button *ngIf="authService.isAdmin$ |async" (click)="onDelete(car.id)">Delete</button>
-    <button *ngIf="!(authService.isAdmin$ |async) && (authService.isLoggedIn$ | async)" (click)="openDialog(car)">Rent</button>
+    <button *ngIf="!(authService.isAdmin$ |async) && (authService.isLoggedIn$ | async)" (click)="openDialog(car)" >Rent</button>
   </header>
 
   <div class="carousel">
-    <button mat-button class="nav left" (click)="prevImage(car)">
+    <button mat-button class="nav left" (click)="prevImage(car)" style="background-color: transparent;">
       <mat-icon>arrow_back_ios</mat-icon>
     </button>
 
@@ -19,7 +19,7 @@
       />
     </div>
 
-    <button mat-button class="nav right" (click)="nextImage(car)">
+    <button mat-button class="nav right" (click)="nextImage(car)" style="background-color: transparent;">
       <mat-icon>arrow_forward_ios</mat-icon>
     </button>
   </div>

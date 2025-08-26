@@ -4,18 +4,25 @@
   align-items: center;
   margin: auto;
   text-align: center;
-  max-width: 1000px;
-  margin-left: 400px;
+box-sizing: border-box;
+margin: auto; 
 }
 
 header {
   display: flex;
+ 
   justify-content: space-between;
   align-items: center;
   width: 100%;
   margin: 30px 0 40px;
-  font-size: 1.6rem;
+  font-size: 100%;
   color: rgb(75, 75, 75);
+    white-space: nowrap;   
+  overflow: hidden;      
+  text-overflow: ellipsis;
+  box-sizing: border-box;
+ 
+
 }
 
 .carousel {
@@ -37,7 +44,8 @@ header {
 .carousel img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+display: flex;
+  object-fit: contain;
   border-radius: 8px;
 }
 
@@ -46,10 +54,10 @@ header {
   top: 50%;
   transform: translateY(-50%);
   font-size: 40px;
-  color: black;
+  color: rgb(212, 69, 69);
   font-weight: 900;
   border: none;
-  background: rgba(255, 255, 255, 0.7);
+  /* background: rgba(255, 255, 255, 0.7); */
   border-radius: 50%;
   cursor: pointer;
   z-index: 2;
@@ -80,19 +88,16 @@ header {
 }
 button{
     width: fit-content;
-    padding: 12px 24px;
+    padding: 12px 10px;
     font-size: 1.1rem;
-    background-color: rgb(189, 190, 182);
+    background-color: rgb(180, 180, 180);
     font-size: 1.3rem;
     border: none;
     color:#000000;
     cursor: pointer;
     border-radius: 5px;
     font-weight: 700;
+    margin-left: 5px;
    
 }
 
-button:hover{
-
-    box-shadow: 0 0 20px #fffc57;
-}
