@@ -1,9 +1,10 @@
 mat-card {
-    width: 300px;
+    width: 350px;
+    height: auto;
     background-color: white;
     padding: 12px 24px;
     cursor: pointer;
-    border-radius: 10px;
+    border-radius: 2px;
     box-shadow: 0 0 5px black;
     box-sizing: border-box;
 }
@@ -50,6 +51,8 @@ span:hover{
 
 mat-card-content{
     margin: auto;
+    font-size: 1.2rem;
+    color: blue;
 }
 img {
   height: 150px;        /* fixed height */

@@ -1,34 +1,212 @@
-section{
-    width: 100%;
-     display: grid;
-     grid-template-columns: repeat(6,1fr);
-     gap: 10px;
-     box-sizing: border-box;
-     padding: 30px;
-
-    margin: auto;
-    align-items: center;
-    justify-content: center;text-align: center;
+section {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  box-sizing: border-box;
+  padding: 30px;
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 
 }
-
+main{
+  background-color: #cccccc;
+}
 mat-spinner {
   display: block;
-  margin: 50% 50%; 
   margin: auto;
 }
-img{
-    width: 100%;
-    height: auto;
-}
-@media (max-width: 480px){
- section{
-      grid-template-columns: repeat(1,1fr);
-      margin: auto;
-      box-sizing: border-box;
-      padding: 60px;
 
- }
+img {
+  width: 100%;
+  position: static;
+  height: auto;
+  filter: sepia(0.1) contrast(1.2) brightness(0.8) saturate(0.8);
+}
+
+.section {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 50;
+  font-size: 3rem;
+  font-family: "Luckiest Guy", cursive;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+button {
+  padding: 12px 24px;
+  font-size: 1rem;
+  background-color: black;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.image-container {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-height: auto;
+  margin: auto;
+
+}
+
+.image-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+span {
+
+  color: rgb(255, 255, 255);
+  text-shadow: 2px 2px 20px rgb(0, 0, 0);
+}
+
+.overlay-text {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: rgb(0, 0, 0);
+  font-size: 3rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 6px rgba(255, 255, 255, 0.7);
+  text-align: center;
+
+}
+
+@media (min-width: 200px) and (max-width: 712px) {
+    .overlay-text {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+
+
+    font-size: 0.8rem;
+
+  }
+
+  button {
+    padding: 10px 10px;
+    width: fit-content;
+    font-size: 0.6rem;
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  section {
+    width: 50%;
+    grid-template-columns: repeat(1, minmax(auto, 400px));
+    padding: 40px;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    padding: 50;
+  }
+
+
+
+}
+
+
+@media (min-width: 713px) and (max-width: 1084px) {
+  section {
+    width: 50%;
+    grid-template-columns: repeat(2, minmax(auto, 400px));
+    padding: 40px;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    padding: 50;
+  }
+    .overlay-text {
+    position: absolute;
+    top: 20%;
+    /* adjust vertical placement */
+    left: 50%;
+    /* start from center */
+
+    font-size: 1.5rem;
+
+  }
+
+  button {
+    width: fit-content;
+    padding: 10px 10px;
+    font-size: 1.1rem;
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+}
+
+@media (min-width: 1085px) and (max-width: 1249px) {
+  section {
+    width: 50%;
+    grid-template-columns: repeat(3, minmax(auto, 400px));
+    padding: 40px;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    padding: 50;
+  }
+
+  .overlay-text {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    font-size: 2.3rem;
+
+  }
+
+  button {
+    width: fit-content;
+    padding: 10px 10px;
+    font-size: 1.1rem;
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+}
+
+
+@media (min-width: 1250px) {
+  section {
+    width: 50%;
+    grid-template-columns: repeat(4, minmax(auto, 400px));
+    padding: 40px;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    padding: 50;
+  }
+
+
+}
+
+
+@media (min-width: 1900px) {
+  section {
+    grid-template-columns: repeat(5 1fr);
+    padding: 40px;
+  }
 
 
 }

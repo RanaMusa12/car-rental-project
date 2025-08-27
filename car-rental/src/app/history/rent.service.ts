@@ -18,7 +18,7 @@ constructor(private firestore: Firestore, private authService: AuthService) {
   });
 }
 
-addRecord(record: carHistory) {
+addRecord(record: any) {
   if (!this.userId) throw new Error('User not logged in');
   
   const userHistoryCollection = collection(
@@ -34,11 +34,12 @@ addRecord(record: carHistory) {
       this.firestore,
       `rentals/${userId}/history`
     );
+   
     return collectionData(userHistoryCollection, { idField: 'id' }) as Observable<carHistory[]>;
   }
 
 
- async addReservation(reservation: {carId: string; from: Date; to: Date }) {
+ async addReservation(reservation: any) {
     // Path: reservations/{carId}/all
     const carReservationsRef = collection(this.firestore, `reservations/${reservation.carId}/all`);
 

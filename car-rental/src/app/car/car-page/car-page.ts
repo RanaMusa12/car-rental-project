@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CarService } from '../car.service'
 import { Observable, window } from 'rxjs';
@@ -32,6 +32,8 @@ export class CarPage implements OnInit {
     public authService :AuthService
   
   ) {}
+
+
   car$!: Observable<any>;
   ngOnInit(): void {
     

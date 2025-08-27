@@ -1,7 +1,23 @@
-<img src="https://4kwallpapers.com/images/walls/thumbs_3t/23614.jpg">
-<section>
-    <div *ngFor="let car of cars$ | async">
-        <app-car [car]="car"></app-car>
+<!-- <div class="section">
+  <p>Rent Now with SUPER CARS</p>
+  <a href="#" (click)="scrollToCars($event)">discover Now</a>
+</div> -->
+
+<main>
+    <div class="image-container">
+        <img src="https://images.wallpaperscraft.com/image/single/bmw_m2_bmw_car_317510_3840x2400.jpg" alt="Car">
+        <div class="overlay-text">
+            <p>Rent Now with <span>SUPER CARS</span></p>
+            <button class="discover-button" (click)="scrollToCars($event)">discover Now</button>
+        </div>
+
     </div>
-    <mat-spinner *ngIf="loading()" diameter="200"></mat-spinner>
-</section>
+
+
+    <section id="car-list">
+        <div *ngFor="let car of cars$ | async">
+            <app-car [car]="car"></app-car>
+        </div>
+        <mat-spinner *ngIf="loading()" diameter="200"></mat-spinner>
+    </section>
+</main>

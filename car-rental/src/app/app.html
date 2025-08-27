@@ -1,48 +1,55 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #drawer mode="over">
     <mat-nav-list>
-        <img *ngIf="(authService.isLoggedIn$ | async) && !(authService.isAdmin$ |async)" src="https://www.transparentpng.com/download/user/gray-user-profile-icon-png-fP8Q1P.png">
-      <button *ngIf="(authService.isLoggedIn$ | async) && !(authService.isAdmin$ |async)" class="side-nav-button" mat-button routerLink="/cars" (click)="drawer.close()">
+      <img *ngIf="(authService.isLoggedIn$ | async) && !(authService.isAdmin$ |async)"
+        src="https://www.transparentpng.com/download/user/gray-user-profile-icon-png-fP8Q1P.png">
+      <button *ngIf="(authService.isLoggedIn$ | async) && !(authService.isAdmin$ |async)" class="side-nav-button"
+        mat-button routerLink="/" (click)="drawer.close()">
         <mat-icon>directions_car</mat-icon>
         Cars
       </button>
 
-      <button *ngIf="(authService.isLoggedIn$ | async) && !(authService.isAdmin$ |async)" class="side-nav-button" mat-button routerLink="/history" (click)="drawer.close()">
+      <button *ngIf="(authService.isLoggedIn$ | async) && !(authService.isAdmin$ |async)" class="side-nav-button"
+        mat-button routerLink="/history" (click)="drawer.close()">
         <mat-icon>history</mat-icon>
         History
       </button>
-        <a  *ngIf="!(authService.isLoggedIn$ | async)"  class="side-nav-button" mat-button routerLink="/login">Login</a>
-        <a  *ngIf="!(authService.isLoggedIn$ | async)" class="side-nav-button" mat-button routerLink="/signup">Sign Up</a>
-        <button  fxHide.xs fxHide.sm  *ngIf="(authService.isLoggedIn$ | async)" class="side-nav-button" style="color: red;" mat-button  (click)="onLogOut()">Logout</button>
+      <a  *ngIf="!(authService.isLoggedIn$ | async)" class="side-nav-button" mat-button routerLink="/login" (click)="drawer.close()" >Login</a>
+      <a *ngIf="!(authService.isLoggedIn$ | async)" class="side-nav-button" mat-button routerLink="/signup" (click)="drawer.close()">Sign Up</a>
+      <button *ngIf="(authService.isLoggedIn$ | async)" class="side-nav-button" style="color: red;" mat-button
+        (click)="onLogOut()">Logout</button>
     </mat-nav-list>
   </mat-sidenav>
 
-  <!-- Main Content -->
+
   <mat-sidenav-content>
-    <!-- HEADER -->
+
     <mat-toolbar color="primary" class="header">
-      <!-- Menu button for sidenav -->
+
       <button mat-icon-button class="menu-button" (click)="drawer.toggle()">
         <mat-icon>menu</mat-icon>
       </button>
 
-      <!-- Logo -->
-      <!-- <img src="logo.png" class="logo-img" alt="logo" /> -->
+
       <a class="logo" routerLink="/">Super Cars</a>
 
-      <!-- Right side links -->
       <span class="spacer"></span>
       <ng-container *ngIf="!(authService.isLoggedIn$ | async)">
-        <a mat-button routerLink="/login">Login</a>
-        <a mat-button routerLink="/signup">Sign Up</a>
+        <a fxHide.xs fxHide.sm mat-button routerLink="/login">Login</a>
+        <a fxHide.xs fxHide.sm  mat-button routerLink="/signup">Sign Up</a>
       </ng-container>
 
-      <button class="button-style button-logout" mat-button *ngIf="(authService.isLoggedIn$ | async)" (click)="onLogOut()">Logout</button>
-      <button class="button-style" mat-button *ngIf="authService.isAdmin$ | async" (click)="openDialog()">+ Add Car</button>
+      <button matFab extended="" fxHide.xs fxHide.sm style="background-color: rgb(255, 255, 255); color: red;"
+        *ngIf="(authService.isLoggedIn$ | async)" (click)="onLogOut()">
+        <mat-icon>logout</mat-icon>
+        Logout
+      </button>
+      <button class="button-style" mat-button *ngIf="authService.isAdmin$ | async" (click)="openDialog()">+ Add
+        Car</button>
     </mat-toolbar>
-  
-    <!-- Page Content -->
-    <div class="content">    
+
+
+    <div class="content">
       <router-outlet></router-outlet>
     </div>
   </mat-sidenav-content>

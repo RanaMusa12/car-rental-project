@@ -23,6 +23,8 @@ imports: [MatInputModule, MatFormFieldModule,MatCheckboxModule, MatButtonModule,
 export class Login {
     loading = signal(false);
 //authService = inject(AuthServiceTs)
+    error:string='';
+
   constructor(private authService:AuthService){}
   router = inject(Router);
 
@@ -33,18 +35,30 @@ export class Login {
 
      }
 
-       
-  onSubmit(f:NgForm){
-     this.loading.set(true); // Start spinner
+ onSubmit(f: NgForm) {
+  this.loading.set(true);
 
-    console.log(f.value);
-    this.authService.login(f.value.email, f.value.password).subscribe(() => {
-
-      this.router.navigateByUrl('/');
+  this.authService.login(f.value.email, f.value.password).subscribe({
+    next: (userCredential) => {
+      console.log("Login successful:", userCredential);
       this.loading.set(false);
-    })
+      this.router.navigateByUrl('/');
+    },
+    error: (err) => {
+      console.error('Login failed', err);
+      this.loading.set(false);
+      this.error = "Password or email is incorrect, please try again.";
+    }
+  });
+}
 
-  }
+
+
+
+
+
+
+
 
 
 }

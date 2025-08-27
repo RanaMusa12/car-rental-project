@@ -11,12 +11,13 @@
   align-items: center;
   padding-bottom: 60px;
   padding-top: 60px;
-  background-color: rgb(255, 255, 255);
+  background-color: #cccccc;
   top: 0;
   position: sticky;
   z-index: 999;
-  border-bottom: 1px solid black;
+  /* border-bottom: 1px solid black; */
   align-items: center;
+
 }
 
 .logo-img {
@@ -42,7 +43,7 @@
 }
 
 .content {
-  /* padding: 30px; */
+
   box-sizing: border-box;
   background-color: white;
 }
@@ -66,9 +67,7 @@ a, .button-style{
     box-sizing: border-box;
     margin-right: 10px;
 }
-.button-logout{
-    background-color: red;
-}
+
 
 mat-icon{
 
@@ -87,4 +86,7 @@ mat-toolbar{
     align-items: center;
     justify-content: center;
     text-align: center;
+  
+   
 }
+

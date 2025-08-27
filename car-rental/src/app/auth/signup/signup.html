@@ -5,10 +5,6 @@
    </div>
     <h1>Create an account</h1>
     <form #f="ngForm" (ngSubmit)="onSubmit(f)">
-         <mat-form-field>
-            <mat-label>Name</mat-label>
-            <input matInput name="name"  required ngModel  #namelInput="ngModel">
-        </mat-form-field>
         <mat-form-field>
             <mat-label>Email</mat-label>
             <input matInput name="email" email required ngModel  #emailInput="ngModel">

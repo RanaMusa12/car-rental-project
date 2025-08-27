@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { CarItem } from "../car";
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { ViewportScroller } from '@angular/common';
 
 
 @Component({
@@ -18,7 +19,7 @@ export class CarList {
    cars$: Observable<Car[]>;
    loading = signal(true);
 
-constructor(carService: CarService) {
+constructor(carService: CarService, private viewportScroller: ViewportScroller) {
   this.loading.set(true);
   this.cars$ = carService.getCars();
 
@@ -27,7 +28,13 @@ constructor(carService: CarService) {
     this.loading.set(false);  // stop spinner once data arrives
   });
 }
+scrollToCars(event: Event) {
+  event.preventDefault(); // stops the anchor from refreshing page
+  const el = document.getElementById('car-list');
+  if (el) {
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
 
-  
 
 }

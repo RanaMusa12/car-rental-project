@@ -1,10 +1,4 @@
 <div class="car-page" *ngIf="car$ | async as car">
-  <header>
-    <h1>{{ car.name }}  |  {{ car.cost }} ₪</h1>
-    <button *ngIf="authService.isAdmin$ |async" (click)="openEditDialog(car)">Edit</button>
-    <button *ngIf="authService.isAdmin$ |async" (click)="onDelete(car.id)">Delete</button>
-    <button *ngIf="!(authService.isAdmin$ |async) && (authService.isLoggedIn$ | async)" (click)="openDialog(car)" >Rent</button>
-  </header>
 
   <div class="carousel">
     <button mat-button class="nav left" (click)="prevImage(car)" style="background-color: transparent;">
@@ -12,20 +6,30 @@
     </button>
 
     <div class="images-container">
-      <img
-        mat-card-image
-        [src]="car?.images?.[currentIndex]"
-        [alt]="car?.name"
-      />
+      <img mat-card-image [src]="car?.images?.[currentIndex]" [alt]="car?.name" />
     </div>
 
     <button mat-button class="nav right" (click)="nextImage(car)" style="background-color: transparent;">
       <mat-icon>arrow_forward_ios</mat-icon>
     </button>
   </div>
-
-  <div class="details">
-    <p>{{ car.details }}</p>
+  <header>
     
-  </div>
+    <div style="display: flex; flex-direction: row; gap: 60px;">
+      <button *ngIf="authService.isAdmin$ |async" (click)="openEditDialog(car)">Edit</button>
+      <button *ngIf="authService.isAdmin$ |async" (click)="onDelete(car.id)">Delete</button>
+      <button *ngIf="!(authService.isAdmin$ |async) && (authService.isLoggedIn$ | async)"
+        (click)="openDialog(car)">Rent</button>
+    </div>
+    <h1>{{ car.name }} | {{ car.cost }} ₪</h1>
+
+    <div class="details">
+      <p>{{ car.details }}</p>
+
+    </div>
+  </header>
+
+
+
 </div>
+<img *ngIf="car$ | async as car" class="image2" [src]="car?.images?.[0]">

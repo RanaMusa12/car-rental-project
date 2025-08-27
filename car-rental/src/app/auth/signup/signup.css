@@ -8,11 +8,12 @@ form {
     
     align-items: center;
     text-align: left;
+    
    
 }
 
 .container {
-    margin: 100px auto 0;
+    margin: auto ;
     background-color: white;
     padding: 40px;
     border-radius: 12px;
@@ -26,6 +27,8 @@ form {
     height: fit-content;          /* Makes it responsive */
     max-width: 500px;        /* Limits it on large screens */
     box-sizing: border-box;
+    margin-top: 10px;
+    
     
 }
 

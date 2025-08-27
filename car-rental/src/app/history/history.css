@@ -12,3 +12,6 @@ table {
   /* margin-left: 600px; optional, but keep it neat */
   margin-top: 60px;
 }
+td{
+   font-size: 100%;
+}

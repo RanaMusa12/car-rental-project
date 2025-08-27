@@ -4,6 +4,7 @@ import { carHistory } from './History.model';
 import { RentService } from './rent.service';
 import { Auth } from '@angular/fire/auth';
 import { DatePipe } from '@angular/common';
+import { onAuthStateChanged } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-history',
@@ -12,20 +13,23 @@ import { DatePipe } from '@angular/common';
   styleUrls: ['./history.css']
 })
 export class History implements OnInit {
-  displayedColumns: string[] = ['id', 'car', 'from', 'to', 'total'];
+  displayedColumns: string[] = ['car', 'from', 'to', 'total'];
   dataSource: carHistory[] = [];
 
   constructor(private rentService: RentService, private auth: Auth) {}
 
-  ngOnInit(): void {
-    const user = this.auth.currentUser;
+ngOnInit(): void {
+  onAuthStateChanged(this.auth, user => {
     if (!user) {
       console.warn('Not logged in!');
       return;
     }
 
     this.rentService.getUserHistory(user.uid).subscribe(history => {
+      console.log('History data:', history); // 👈 debug what comes back
       this.dataSource = history;
     });
-  }
+  });
+}
+
 }
