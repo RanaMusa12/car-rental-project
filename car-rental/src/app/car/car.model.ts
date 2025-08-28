@@ -4,5 +4,6 @@ export interface Car{
   cost: number;
   details: string;
   images: string[];
-
+  numberOfSeats:string;
+  modelYear: string;
 }

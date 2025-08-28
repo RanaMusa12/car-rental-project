@@ -1,13 +1,13 @@
 form {
     display: flex;
     flex-direction: column;
-    gap: 20px; /* Adds spacing between form fields */
+    gap: 20px;
     width: 100%;
     height: 100%;
-    margin: 0 auto; /* Center form horizontally */
+    margin: 0 auto;
     align-items: stretch;
     text-align: left;
-    box-sizing: border-box  
+    box-sizing: border-box
 }
 
 .container {
@@ -20,9 +20,8 @@ form {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    
-    width: 90%;              /* Makes it responsive */
-    max-width: 500px;        /* Limits it on large screens */
+    width: 90%;
+    max-width: 500px;
     box-sizing: border-box;
     height: 100%;
     margin-top: 10px;
@@ -47,48 +46,43 @@ hr {
 }
 
 :host ::ng-deep .mat-mdc-form-field .mdc-text-field--filled {
-  background-color: transparent !important;
+    background-color: transparent !important;
 }
-.visibilityBtn{
+
+.visibilityBtn {
     background-color: transparent;
     border: none;
 }
 
-img{
+img {
     width: 50px;
 }
 
-
-
-
-
-:host ::ng-deep .mat-mdc-checkbox label{
+:host ::ng-deep .mat-mdc-checkbox label {
 
     font-size: 1.1rem;
     color: #333;
 }
 
-:host ::ng-deep .mat-mdc-floating-label.mdc-floating-label{
+:host ::ng-deep .mat-mdc-floating-label.mdc-floating-label {
 
     font-size: 1.2rem !important;
 
 }
 
-.have-account{
+.have-account {
 
     display: flex;
-    
+
     align-items: center;
     justify-content: center;
     font-size: 1.1rem;
     font-weight: none;
     gap: 5px;
-    
+
 }
 
-:host ::deep .mat-mdc-form-field{
+:host ::deep .mat-mdc-form-field {
 
     max-width: 700px !important;
 }
-
- 

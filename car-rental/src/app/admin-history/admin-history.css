@@ -1,0 +1,17 @@
+.container {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    box-sizing: border-box;
+}
+
+table {
+    margin-top: 60px;
+}
+
+td {
+    font-size: 100%;
+}

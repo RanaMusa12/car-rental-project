@@ -1,4 +1,9 @@
-import { Component, inject, ChangeDetectionStrategy, Inject } from '@angular/core';
+import {
+  Component,
+  inject,
+  ChangeDetectionStrategy,
+  Inject,
+} from '@angular/core';
 import {
   MAT_DIALOG_DATA,
   MatDialogRef,
@@ -43,41 +48,28 @@ import { Dialog } from '@angular/cdk/dialog';
 })
 export class DialogEdit {
   readonly dialogRef = inject(MatDialogRef<Dialog>);
-
   car$!: Observable<Car | undefined>;
   fromDate!: Date;
   toDate!: Date;
-
-
-
+  
   constructor(
     private carService: CarService,
     @Inject(MAT_DIALOG_DATA) public data: { id: string }
   ) {
-
     this.car$ = this.carService.getCarById(this.data.id);
-    console.log(this.car$)
+    console.log(this.car$);
   }
-
 
   onRent(form: NgForm) {
     console.log(form.value.fromDate);
     console.log(form.value.toDate);
-
-
-
   }
-
-
 
   onNoClick(): void {
     this.dialogRef.close();
   }
 
-  onEdit(id:string |undefined ,car: Car){
-
+  onEdit(id: string | undefined, car: Car) {
     this.carService.updateCar(id, car);
-    }
-
- 
+  }
 }

@@ -1,65 +1,74 @@
 mat-card {
-    width: 350px;
-    height: auto;
-    background-color: white;
-    padding: 12px 24px;
-    cursor: pointer;
-    border-radius: 2px;
-    box-shadow: 0 0 5px black;
-    box-sizing: border-box;
+  width: 350px;
+  height: auto;
+  background-color: white;
+  padding: 12px 24px;
+  cursor: pointer;
+  border-radius: 2px;
+  box-shadow: 0 0 5px black;
+  box-sizing: border-box;
 }
+
 .disabled {
-  opacity: 0.5;          
-  pointer-events: none;  
+  opacity: 0.5;
+  pointer-events: none;
 }
-.isAvailable-today{
+
+.isAvailable-today {
   font-weight: bold;
   color: red;
   filter: none;
   opacity: 1;
 }
-mat-card-header{
-    margin: auto;
-    color: #000000;
+
+mat-card-header {
+  margin: auto;
+  color: #000000;
 }
-mat-card-content{
-    color: #000000;
+
+mat-card-content {
+  color: #000000;
 }
-mat-card:hover{
-    box-shadow: 0px 0px 12px rgb(0, 0, 0);
-     border: 1px solid black;
+
+mat-card:hover {
+  box-shadow: 0px 0px 12px rgb(0, 0, 0);
+  border: 1px solid black;
 }
-button{
-    width: fit-content;
-    padding: 12px 24px;
-    font-size: 1.3rem;
-    margin: auto;
-    border: 1px solid #000000;
-    background-color: transparent;
-    color:#000000;
-    cursor: pointer;
-    margin-top: 30px;
+
+button {
+  width: fit-content;
+  padding: 12px 24px;
+  font-size: 1.3rem;
+  margin: auto;
+  border: none;
+  background-color: transparent;
+  color: #000000;
+  cursor: pointer;
+  margin-top: 30px;
 }
-span{
- display: inline-block;
+
+span {
+  display: inline-block;
   transition: transform 0.3s ease;
 }
-span:hover{
 
-    transform: translateX(5px);
+span:hover {
+
+  transform: translateX(5px);
 }
 
-mat-card-content{
-    margin: auto;
-    font-size: 1.2rem;
-    color: blue;
+mat-card-content {
+  margin: auto;
+  font-size: 1.2rem;
+  color: blue;
 }
+
 img {
-  height: 150px;        /* fixed height */
-  width: 100%;          /* make it fill card width */
-  object-fit: cover;    /* crop to fill instead of stretching */
+  height: 150px;
+  width: 100%;
+  object-fit: cover;
   margin: 30px;
-} 
+}
 
 .carousel {
   position: relative;
@@ -75,37 +84,51 @@ img {
   max-height: 200px;
   object-fit: cover;
   border-radius: 8px;
-  
+
 }
 
 .nav {
   position: absolute;
-  font-size:40px;
+  font-size: 40px;
   color: rgb(0, 0, 0);
   font-weight: 900;
   border: none;
   z-index: 2;
   width: fit-content;
   border-radius: 90%;
-  
 
-  
+
+
 
 }
 
 .nav.left {
   left: 0;
-   top:30px;
+  top: 30px;
 }
 
 .nav.right {
-   right: 0;
-   top:30px;
-
-  /* bottom: 10px; */
+  right: 0;
+  top: 30px;
 }
 
 mat-card-content p {
 
-    text-align: justify;
+  text-align: justify;
+
+}
+
+.details {
+
+  display: flex;
+  gap: 5px;
+
+
+}
+
+.details p {
+
+  border: 1px solid black;
+  padding: 10px;
+  color: black;
 }

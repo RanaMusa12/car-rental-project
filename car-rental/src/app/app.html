@@ -14,10 +14,14 @@
         <mat-icon>history</mat-icon>
         History
       </button>
-      <a  *ngIf="!(authService.isLoggedIn$ | async)" class="side-nav-button" mat-button routerLink="/login" (click)="drawer.close()" >Login</a>
-      <a *ngIf="!(authService.isLoggedIn$ | async)" class="side-nav-button" mat-button routerLink="/signup" (click)="drawer.close()">Sign Up</a>
+      <a *ngIf="!(authService.isLoggedIn$ | async)" class="side-nav-button" mat-button routerLink="/login"
+        (click)="drawer.close()">Login</a>
+      <a *ngIf="!(authService.isLoggedIn$ | async)" class="side-nav-button" mat-button routerLink="/signup"
+        (click)="drawer.close()">Sign Up</a>
+      <a routerLink="all-rentals" *ngIf="authService.isAdmin$ | async"  class="side-nav-button" mat-button >All rentals</a>
       <button *ngIf="(authService.isLoggedIn$ | async)" class="side-nav-button" style="color: red;" mat-button
         (click)="onLogOut()">Logout</button>
+       
     </mat-nav-list>
   </mat-sidenav>
 
@@ -36,16 +40,17 @@
       <span class="spacer"></span>
       <ng-container *ngIf="!(authService.isLoggedIn$ | async)">
         <a fxHide.xs fxHide.sm mat-button routerLink="/login">Login</a>
-        <a fxHide.xs fxHide.sm  mat-button routerLink="/signup">Sign Up</a>
+        <a fxHide.xs fxHide.sm mat-button routerLink="/signup">Sign Up</a>
+         
       </ng-container>
+      <button class="button-style" mat-button *ngIf="authService.isAdmin$ | async" (click)="openDialog()">+Add</button>
+      
 
       <button matFab extended="" fxHide.xs fxHide.sm style="background-color: rgb(255, 255, 255); color: red;"
         *ngIf="(authService.isLoggedIn$ | async)" (click)="onLogOut()">
         <mat-icon>logout</mat-icon>
         Logout
       </button>
-      <button class="button-style" mat-button *ngIf="authService.isAdmin$ | async" (click)="openDialog()">+ Add
-        Car</button>
     </mat-toolbar>
 
 

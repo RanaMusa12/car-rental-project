@@ -84,7 +84,7 @@ interface informations {
 export class Dialog {
   confirmation = signal(false);
   readonly dialogRef = inject(MatDialogRef<Dialog>);
-
+  car$!: Observable<Car | undefined>;
   carId: string = '';
   carName: string = '';
   fromDate!: Date;
@@ -93,12 +93,8 @@ export class Dialog {
   userName!: string;
   phoneNumber!: number;
   address!: string;
-
+  approved: boolean=false;
   nowDate = new Date();
-
-  car$!: Observable<Car | undefined>;
-  // fromDate!: Date;
-  // toDate!: Date;
   isAvailable: boolean | null = null;
 
   constructor(
@@ -211,7 +207,10 @@ export class Dialog {
         phone :this.phoneNumber,
         from: this.fromDate,
         to: this.toDate,
-        total:this.total
+        total:this.total,
+        carName:this.carName,
+        approved:this.approved,
+        
       });
 
 

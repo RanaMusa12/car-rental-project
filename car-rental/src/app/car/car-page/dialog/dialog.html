@@ -1,7 +1,7 @@
 <section *ngIf="confirmation() === false">
   <div class="mat-dialog-content" mat-dialog-content>
     <h1 mat-dialog-title>Rent a Car</h1>
-    <form *ngIf="car$ | async as car" #form="ngForm" (ngSubmit)="onRent(form, car)" style="width: 270px;" > <!--(ngSubmit)="onRent(form, car)"-->
+    <form *ngIf="car$ | async as car" #form="ngForm" (ngSubmit)="onRent(form, car)" style="width: 270px;">
       <mat-form-field appearance="fill">
         <mat-label>From</mat-label>
         <input matInput (dateChange)="checkAvailability(data.id, fromDate, toDate)" [matDatepicker]="picker1"
@@ -28,11 +28,11 @@
       <mat-error *ngIf="fromDate > toDate">
         From date cannot be later than To date
       </mat-error>
-        <mat-error *ngIf="isSameDay()">
+      <mat-error *ngIf="isSameDay()">
         you need to coose a full day
       </mat-error>
 
-        <mat-error *ngIf=" nowDate > toDate">
+      <mat-error *ngIf=" nowDate > toDate">
         you can't rent in past, choose Dates in future to complete renting
       </mat-error>
 
@@ -45,14 +45,11 @@
 
       <mat-label>Rent period = {{fromDate && toDate && fromDate < toDate ? (toDate.getTime() - fromDate.getTime()) /
           (1000 * 60 * 60 * 24) : 0}} day/s</mat-label>
-
-
-
-
           <div class="mat-dialog-actions" mat-dialog-actions>
             <button mat-button type="button" (click)="onNoClick()">Cancel</button>
-            <button (click)="onContinuetoConfirmation()" matButton [disabled]="form.invalid || fromDate > toDate || isAvailable === false || isSameDay() || nowDate > toDate" mat-flat-button
-              color="primary" type="submit" >
+            <button (click)="onContinuetoConfirmation()" matButton
+              [disabled]="form.invalid || fromDate > toDate || isAvailable === false || isSameDay() || nowDate > toDate"
+              mat-flat-button color="primary" type="submit">
               Rent
             </button>
           </div>
@@ -62,73 +59,73 @@
 
 
 <section *ngIf="confirmation() === true">
-    <mat-stepper orientation="vertical"  #stepper>
+  <mat-stepper orientation="vertical" #stepper>
     <mat-step [stepControl]="firstFormGroup">
-        <form [formGroup]="firstFormGroup" >
+      <form [formGroup]="firstFormGroup">
         <ng-template matStepLabel>Fill out your name</ng-template>
         <mat-form-field>
-            <mat-label>Name</mat-label>
-            <input matInput placeholder="First name, Last name" formControlName="nameCtrl" required>
+          <mat-label>Name</mat-label>
+          <input matInput placeholder="First name, Last name" formControlName="nameCtrl" required>
         </mat-form-field>
-      
+
         <div>
-            <button matButton matStepperNext color="primary">Next</button>
+          <button matButton matStepperNext color="primary">Next</button>
         </div>
-        </form>
+      </form>
     </mat-step>
     <mat-step [stepControl]="secondFormGroup">
-        <form [formGroup]="secondFormGroup">
+      <form [formGroup]="secondFormGroup">
         <ng-template matStepLabel>Fill out your address</ng-template>
         <mat-form-field>
-            <mat-label>Address</mat-label>
-            <input matInput formControlName="addressCtrl" placeholder="Ex. Ramallah"
-                required>
+          <mat-label>Address</mat-label>
+          <input matInput formControlName="addressCtrl" placeholder="Ex. Ramallah" required>
         </mat-form-field>
         <div>
-            <button matButton matStepperPrevious color="primary">Back</button>
-            <button matButton matStepperNext color="primary">Next</button>
+          <button matButton matStepperPrevious color="primary">Back</button>
+          <button matButton matStepperNext color="primary">Next</button>
         </div>
-        </form>
+      </form>
     </mat-step>
-      <mat-step [stepControl]="thirdFormGroup">
-        <form [formGroup]="thirdFormGroup">
+    <mat-step [stepControl]="thirdFormGroup">
+      <form [formGroup]="thirdFormGroup">
         <ng-template matStepLabel>Fill out your phone number</ng-template>
 
         <mat-form-field>
-        <mat-label>choose</mat-label>
-        <mat-select [formControl]="phoneControl" required>
+          <mat-label>choose</mat-label>
+          <mat-select [formControl]="phoneControl" required>
             <mat-option>--</mat-option>
             @for (animal of phone; track animal) {
             <mat-option [value]="animal">{{animal.PhoeNumber}}</mat-option>
             }
-        </mat-select>
-        @if (phoneControl.hasError('required')) {
-            <mat-error>Please fill</mat-error>
-        }
-      
+          </mat-select>
+          @if (phoneControl.hasError('required')) {
+          <mat-error>Please fill</mat-error>
+          }
+
         </mat-form-field>
 
         <mat-form-field>
-            <mat-label>phone number</mat-label>
-            <input matInput formControlName="phoneCtrl" placeholder="59*******"
-                required minlength="9" maxlength="9">
+          <mat-label>phone number</mat-label>
+          <input matInput formControlName="phoneCtrl" placeholder="59*******" required minlength="9" maxlength="9">
         </mat-form-field>
         <div>
-            <button matButton matStepperPrevious color="primary">Back</button>
-            <button matButton matStepperNext color="primary">Next</button>
+          <button matButton matStepperPrevious color="primary">Back</button>
+          <button matButton matStepperNext color="primary">Next</button>
         </div>
-        </form>
+      </form>
     </mat-step>
     <mat-step>
-        <ng-template matStepLabel>Rent now</ng-template>
-        <p style="color: red;">By clicking Rent button you are renting, you can't cancel!</p>
-        <div style="display: flex; flex-direction: column; width: fit-content; gap: 10px;">
-        <button  matButton (click)="onBacktoDates()" color="primary">Change Dates</button>
-        <button  [disabled]="firstFormGroup.invalid || secondFormGroup.invalid || thirdFormGroup.invalid" (click)="onConfirm()" matButton (click)="stepper.reset()" color="primary">Rent</button>
-        <button (click)="onNoClick()" matButton matStepperPrevious color="primary" style="color: red;">Cancel</button>   
-        </div>
+      <ng-template matStepLabel>Rent now</ng-template>
+      <p style="color: red;">By clicking Rent button you are renting, you can't cancel!</p>
+      <div style="display: flex; flex-direction: column; width: fit-content; gap: 10px;">
+        <button matButton (click)="onBacktoDates()" color="primary">Change Dates</button>
+        <button [disabled]="firstFormGroup.invalid || secondFormGroup.invalid || thirdFormGroup.invalid"
+          (click)="onConfirm()" matButton (click)="stepper.reset()" color="primary">Rent</button>
+        <button (click)="onNoClick()" matButton matStepperPrevious color="primary" style="color: red;">Cancel</button>
+      </div>
     </mat-step>
-     <mat-error *ngIf ="firstFormGroup.invalid || secondFormGroup.invalid || thirdFormGroup.invalid">Please fill all fields</mat-error>
-    </mat-stepper>
+    <mat-error *ngIf="firstFormGroup.invalid || secondFormGroup.invalid || thirdFormGroup.invalid">Please fill all
+      fields</mat-error>
+  </mat-stepper>
 
 </section>

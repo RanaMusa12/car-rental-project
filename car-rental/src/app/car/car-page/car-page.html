@@ -14,7 +14,7 @@
     </button>
   </div>
   <header>
-    
+
     <div style="display: flex; flex-direction: row; gap: 60px;">
       <button *ngIf="authService.isAdmin$ |async" (click)="openEditDialog(car)">Edit</button>
       <button *ngIf="authService.isAdmin$ |async" (click)="onDelete(car.id)">Delete</button>
@@ -26,10 +26,11 @@
     <div class="details">
       <p>{{ car.details }}</p>
 
+
     </div>
+
   </header>
 
 
 
 </div>
-<img *ngIf="car$ | async as car" class="image2" [src]="car?.images?.[0]">

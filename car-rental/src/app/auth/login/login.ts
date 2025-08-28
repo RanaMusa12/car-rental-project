@@ -9,7 +9,6 @@ import { NgForm } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { RouterLinkActive } from '@angular/router';
-//import { AuthServiceTs } from '../../auth.service.ts';
 import { Router } from '@angular/router';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { CommonModule } from '@angular/common';
@@ -22,7 +21,6 @@ imports: [MatInputModule, MatFormFieldModule,MatCheckboxModule, MatButtonModule,
 })
 export class Login {
     loading = signal(false);
-//authService = inject(AuthServiceTs)
     error:string='';
 
   constructor(private authService:AuthService){}

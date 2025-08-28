@@ -1,63 +1,91 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Firestore, collection, addDoc, collectionData,doc, docData, setDoc, query, getDocs } from '@angular/fire/firestore';
-import { updateDoc,deleteDoc } from '@angular/fire/firestore';
+import {
+  Firestore,
+  collection,
+  addDoc,
+  collectionData,
+  doc,
+  docData,
+  setDoc,
+  query,
+  getDocs,
+  collectionGroup,
+} from '@angular/fire/firestore';
+import { updateDoc, deleteDoc } from '@angular/fire/firestore';
 import { carHistory } from './History.model';
 import { AuthService } from '../auth/auth.service';
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class RentService {
+  userId?: string;
 
+  constructor(private firestore: Firestore, private authService: AuthService) {
+    this.authService.user$.subscribe((user) => {
+      this.userId = user?.uid ?? undefined;
+    });
+  }
 
-userId?: string;
+  addRecord(record: any) {
+    if (!this.userId) throw new Error('User not logged in');
 
-constructor(private firestore: Firestore, private authService: AuthService) {
-  this.authService.user$.subscribe(user => {
-    this.userId = user?.uid ?? undefined;
-  });
-}
+    const userHistoryCollection = collection(
+      this.firestore,
+      `rentals/${this.userId}/history`
+    );
 
-addRecord(record: any) {
-  if (!this.userId) throw new Error('User not logged in');
-  
-  const userHistoryCollection = collection(
-    this.firestore,
-    `rentals/${this.userId}/history`
-  );
+    return addDoc(userHistoryCollection, record);
+  }
 
-  return addDoc(userHistoryCollection, record);
-}
-
- getUserHistory(userId: string): Observable<carHistory[]> {
+  getUserHistory(userId: string): Observable<carHistory[]> {
     const userHistoryCollection = collection(
       this.firestore,
       `rentals/${userId}/history`
     );
-   
-    return collectionData(userHistoryCollection, { idField: 'id' }) as Observable<carHistory[]>;
+
+    return collectionData(userHistoryCollection, {
+      idField: 'id',
+    }) as Observable<carHistory[]>;
   }
 
-
- async addReservation(reservation: any) {
-    // Path: reservations/{carId}/all
-    const carReservationsRef = collection(this.firestore, `reservations/${reservation.carId}/all`);
-
-    // Add the reservation and let Firestore generate the ID
+  async addReservation(reservation: any) {
+    const carReservationsRef = collection(
+      this.firestore,
+      `reservations/${reservation.carId}/all`
+    );
     const newDoc = await addDoc(carReservationsRef, {
       ...reservation,
       byUser: this.userId,
-      from: reservation.from, 
+      from: reservation.from,
       to: reservation.to,
-      reservedAt: new Date()
+      reservedAt: new Date(),
     });
 
     return newDoc.id;
   }
 
+  async getAllReservations() {
+    const reservationsRef = collectionGroup(this.firestore, 'all');
+    const snapshot = await getDocs(reservationsRef);
 
-   async isCarAvailable(carId: string, from: Date, to: Date): Promise<boolean> {
-    const reservationsRef = collection(this.firestore, `reservations/${carId}/all`);
+    return snapshot.docs.map((doc) => {
+      const pathParts = doc.ref.path.split('/');
+      const carId = pathParts[1];
+
+      return {
+        id: doc.id,
+        carId,
+        ...doc.data(),
+      };
+    });
+  }
+
+  async isCarAvailable(carId: string, from: Date, to: Date): Promise<boolean> {
+    const reservationsRef = collection(
+      this.firestore,
+      `reservations/${carId}/all`
+    );
     const q = query(reservationsRef);
     const querySnapshot = await getDocs(q);
 
@@ -66,38 +94,55 @@ addRecord(record: any) {
       const resFrom = res.from.toDate ? res.from.toDate() : new Date(res.from);
       const resTo = res.to.toDate ? res.to.toDate() : new Date(res.to);
 
-      // overlap check: (start < existingEnd) && (end > existingStart)
       if (from <= resTo && to >= resFrom) {
-        return false; // already reserved in this range
+        return false;
       }
     }
 
-    return true; // no conflicts
+    return true;
   }
 
-async isCarAvailableToday(carId: string | undefined): Promise<boolean> {
-  const today = new Date();
-  today.setHours(0, 0, 0, 0); // normalize to start of today
-  const tomorrow = new Date(today);
-  tomorrow.setDate(today.getDate() + 1);
+  async isCarAvailableToday(carId: string | undefined): Promise<boolean> {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const tomorrow = new Date(today);
+    tomorrow.setDate(today.getDate() + 1);
 
-  const reservationsRef = collection(this.firestore, `reservations/${carId}/all`);
-  const q = query(reservationsRef);
-  const querySnapshot = await getDocs(q);
+    const reservationsRef = collection(
+      this.firestore,
+      `reservations/${carId}/all`
+    );
+    const q = query(reservationsRef);
+    const querySnapshot = await getDocs(q);
 
-  for (const docSnap of querySnapshot.docs) {
-    const res = docSnap.data() as any;
+    for (const docSnap of querySnapshot.docs) {
+      const res = docSnap.data() as any;
 
-    const resFrom: Date = res.from.toDate ? res.from.toDate() : new Date(res.from);
-    const resTo: Date = res.to.toDate ? res.to.toDate() : new Date(res.to);
+      const resFrom: Date = res.from.toDate
+        ? res.from.toDate()
+        : new Date(res.from);
+      const resTo: Date = res.to.toDate ? res.to.toDate() : new Date(res.to);
 
-    // check if TODAY falls inside [resFrom, resTo]
-    if (today <= resTo && tomorrow > resFrom) {
-      return false; // car is already reserved today
+      if (today <= resTo && tomorrow > resFrom) {
+        return false;
+      }
     }
+
+    return true;
   }
 
-  return true; // free all day
-}
-
+  async toggleReservationApproval(
+    reservationId: string,
+    carId: string,
+    currentState: boolean
+  ) {
+    const reservationRef = doc(
+      this.firestore,
+      `reservations/${carId}/all/${reservationId}`
+    );
+    await updateDoc(reservationRef, {
+      approved: !currentState,
+    });
+    return !currentState;
+  }
 }

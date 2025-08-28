@@ -1,21 +1,16 @@
-
-<mat-card class="example-card" appearance="outlined" (click)="onOpenPage(car)" [class.disabled]="isAvailableToday === false" >
+<mat-card appearance="outlined" (click)="onOpenPage(car)"
+  [class.disabled]="isAvailableToday === false && !(authService.isAdmin$ |async)">
   <mat-card-header>
     <mat-card-title>{{ car?.name }}</mat-card-title>
   </mat-card-header>
 
-  <!-- Carousel -->
   <div class="carousel">
     <button mat-button class="nav left" (click)="prevImage($event)">
       <mat-icon>arrow_back_ios</mat-icon>
     </button>
 
-    <img
-      mat-card-image
-      [src]="car?.images?.[currentIndex]"
-      [alt]="car?.name"
-    />
-    
+    <img mat-card-image [src]="car?.images?.[currentIndex]" [alt]="car?.name" />
+
 
     <button mat-button class="nav right" (click)="nextImage($event)">
       <mat-icon>arrow_forward_ios</mat-icon>
@@ -23,13 +18,19 @@
   </div>
 
   <mat-card-content>
-    <!-- <p>{{ car?.details }}</p> -->
+
+    <div class="details">
+      <p> {{car.numberOfSeats}} Seats</p>
+      <p> {{car.modelYear}} Model</p>
+    </div>
+
     <h2>{{ car?.cost }} ₪</h2>
     <p *ngIf="isAvailableToday === false" class="isAvailable-today"> Not available for today</p>
   </mat-card-content>
 
+
   <mat-card-actions>
-    <button mat-raised-button color="primary">
+    <button mat-raised-button color="primary" style="background-color: rgb(218, 218, 218); box-shadow: 0 0 12px #333;">
       <span>
         Rent car →
       </span>

@@ -4,68 +4,46 @@
 
     <mat-form-field appearance="outline">
       <mat-label>Car Name</mat-label>
-      <input
-        type="text"
-        matInput
-        name="name"
-        required
-        [(ngModel)]="car.name"
-        #nameInput="ngModel">
+      <input type="text" matInput name="name" required [(ngModel)]="car.name" #nameInput="ngModel">
     </mat-form-field>
 
     <mat-form-field appearance="outline">
       <mat-label>Cost per day</mat-label>
-      <input
-        matInput
-        type="number"
-        name="cost"
-        required
-        [(ngModel)]="car.cost"
-        #costInput="ngModel">
+      <input matInput type="number" name="cost" required [(ngModel)]="car.cost" #costInput="ngModel">
       <mat-hint>in shekels</mat-hint>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
+      <mat-label>Number Of seats</mat-label>
+      <input type="string" matInput name="NumberOfSeats" required [(ngModel)]="car.numberOfSeats"
+        #NumberOfSeatsInput="ngModel">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Model Year</mat-label>
+      <input type="string" matInput name="ModelYear" required [(ngModel)]="car.modelYear" #ModelYearInput="ngModel">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
       <mat-label>Details</mat-label>
-      <textarea
-        matInput
-        name="details"
-        required
-        [(ngModel)]="car.details"
-        #detailsInput="ngModel"></textarea>
+      <textarea matInput name="details" required [(ngModel)]="car.details" #detailsInput="ngModel"></textarea>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
       <mat-label>Image 1</mat-label>
-      <input
-        type="text"
-        matInput
-        name="image1"
-        required
-        [(ngModel)]="car.images[0]"
-        #image1Input="ngModel">
+      <input type="text" matInput name="image1" required [(ngModel)]="car.images[0]" #image1Input="ngModel">
       <mat-hint>as URL</mat-hint>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
       <mat-label>Image 2</mat-label>
-      <input
-        type="text"
-        matInput
-        name="image2"
-        [(ngModel)]="car.images[1]"
-        #image2Input="ngModel"
+      <input type="text" matInput name="image2" [(ngModel)]="car.images[1]" #image2Input="ngModel"
         placeholder="optional">
     </mat-form-field>
 
     <mat-form-field appearance="outline">
       <mat-label>Image 3</mat-label>
-      <input
-        type="text"
-        matInput
-        name="image3"
-        [(ngModel)]="car.images[2]"
-        #image3Input="ngModel"
+      <input type="text" matInput name="image3" [(ngModel)]="car.images[2]" #image3Input="ngModel"
         placeholder="optional">
     </mat-form-field>
 

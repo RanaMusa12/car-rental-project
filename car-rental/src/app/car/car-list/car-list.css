@@ -11,9 +11,25 @@ section {
   text-align: center;
 
 }
-main{
+
+form {
+
+  width: 100%;
+  gap: 10px;
+  box-sizing: border-box;
+  padding: 30px;
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: auto;
+
+}
+
+main {
   background-color: #cccccc;
 }
+
 mat-spinner {
   display: block;
   margin: auto;
@@ -84,12 +100,10 @@ span {
 }
 
 @media (min-width: 200px) and (max-width: 712px) {
-    .overlay-text {
+  .overlay-text {
     position: absolute;
     top: 20%;
     left: 50%;
-
-
     font-size: 0.8rem;
 
   }
@@ -130,15 +144,12 @@ span {
     justify-content: center;
     padding: 50;
   }
-    .overlay-text {
+
+  .overlay-text {
     position: absolute;
     top: 20%;
-    /* adjust vertical placement */
     left: 50%;
-    /* start from center */
-
     font-size: 1.5rem;
-
   }
 
   button {
@@ -183,7 +194,6 @@ span {
     cursor: pointer;
     text-decoration: none;
   }
-
 }
 
 
@@ -197,10 +207,7 @@ span {
     justify-content: center;
     padding: 50;
   }
-
-
 }
-
 
 @media (min-width: 1900px) {
   section {
