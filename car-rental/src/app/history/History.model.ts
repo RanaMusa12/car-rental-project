@@ -4,4 +4,5 @@ export interface carHistory {
   from: Date;
   to: Date;
   total: number;
+  status: string;
 }

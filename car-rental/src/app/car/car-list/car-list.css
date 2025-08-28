@@ -31,8 +31,12 @@ main {
 }
 
 mat-spinner {
+  width: 100%;
   display: block;
   margin: auto;
+    align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 img {

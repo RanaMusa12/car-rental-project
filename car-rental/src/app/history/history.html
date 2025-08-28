@@ -1,5 +1,5 @@
 <div class="container">
-
+ <div class="table-wrapper">
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
         <ng-container matColumnDef="car">
             <th mat-header-cell *matHeaderCellDef> Car </th>
@@ -22,9 +22,21 @@
             <td mat-cell *matCellDef="let element"> {{element.total}} </td>
         </ng-container>
 
+        <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef> Status </th>
+            <td mat-cell *matCellDef="let element">
+                <span [ngClass]="getStatus(element)">
+                {{ getStatus(element) }}
+                </span>
+            </td>
+    </ng-container>
+
+
+
+
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
-
+ </div>
 
 </div>

@@ -36,6 +36,11 @@
         you can't rent in past, choose Dates in future to complete renting
       </mat-error>
 
+       <mat-error *ngIf="isBeforeToday(fromDate)">
+      Rent at least starts from today
+    </mat-error>
+
+
 
 
 
@@ -48,7 +53,7 @@
           <div class="mat-dialog-actions" mat-dialog-actions>
             <button mat-button type="button" (click)="onNoClick()">Cancel</button>
             <button (click)="onContinuetoConfirmation()" matButton
-              [disabled]="form.invalid || fromDate > toDate || isAvailable === false || isSameDay() || nowDate > toDate"
+              [disabled]="form.invalid || fromDate > toDate || isAvailable === false || isSameDay() || nowDate > toDate || isBeforeToday(fromDate)"
               mat-flat-button color="primary" type="submit">
               Rent
             </button>
@@ -116,7 +121,6 @@
     </mat-step>
     <mat-step>
       <ng-template matStepLabel>Rent now</ng-template>
-      <p style="color: red;">By clicking Rent button you are renting, you can't cancel!</p>
       <div style="display: flex; flex-direction: column; width: fit-content; gap: 10px;">
         <button matButton (click)="onBacktoDates()" color="primary">Change Dates</button>
         <button [disabled]="firstFormGroup.invalid || secondFormGroup.invalid || thirdFormGroup.invalid"

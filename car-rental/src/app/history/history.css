@@ -1,17 +1,38 @@
 .container {
   width: 100%;
-  height: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   margin: auto;
   box-sizing: border-box;
 }
 
-table {
-  margin-top: 60px;
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto; 
 }
 
-td {
-  font-size: 100%;
+table {
+  width: 100%; 
+  min-width: 800px; 
+  border-collapse: collapse;
+}
+
+th.mat-header-cell, td.mat-cell {
+  text-align: left;
+  padding: 8px;
+  white-space: nowrap; 
+}
+
+
+.OnRent {
+  color: blue;
+  font-weight: bold;
+}
+
+.Upcoming {
+  color: red;
+  font-weight: bold;
+}
+
+.Completed {
+  color: grey;
+  font-weight: bold;
 }

@@ -5,15 +5,17 @@ import { RentService } from './rent.service';
 import { Auth } from '@angular/fire/auth';
 import { DatePipe } from '@angular/common';
 import { onAuthStateChanged } from '@angular/fire/auth';
+import { CommonModule } from '@angular/common';
+import { MatButton } from '@angular/material/button';
 
 @Component({
   selector: 'app-history',
-  imports: [MatTableModule, DatePipe],
+  imports: [MatTableModule, DatePipe, CommonModule, MatButton],
   templateUrl: './history.html',
   styleUrls: ['./history.css'],
 })
 export class History implements OnInit {
-  displayedColumns: string[] = ['car', 'from', 'to', 'total'];
+  displayedColumns: string[] = ['car', 'from', 'to', 'total', 'status'];
   dataSource: carHistory[] = [];
 
   constructor(private rentService: RentService, private auth: Auth) {}
@@ -31,4 +33,20 @@ export class History implements OnInit {
       });
     });
   }
+
+  getStatus(element: any): string {
+  const today = new Date();
+  const from = element.from.toDate(); 
+  const to = element.to.toDate();
+
+  if (today >= from && today <= to) {
+    return 'OnRent';
+  } else if (today < from) {
+    return 'Upcoming';
+  } else {
+    return 'Completed';
+  }
+}
+
+
 }
