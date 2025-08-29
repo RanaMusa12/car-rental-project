@@ -13,14 +13,13 @@
     </mat-form-field>
 
     <mat-form-field appearance="outline">
-      <mat-label>Number of seats</mat-label>
-      <input type="text" matInput name="NumberOfSeats" required ngModel NumberOfSeatsInput="ngModel"
-        placeholder="optional">
+      <mat-label>Number of Seats</mat-label>
+      <input matInput type="number" name="numberOfSeats" ngModel required />
     </mat-form-field>
     <mat-form-field appearance="outline">
-      <mat-label>Model Year</mat-label>
-      <input type="text" matInput name="ModelYear" required ngModel #ModelYear="ngModel" placeholder="optional">
-    </mat-form-field>
+  <mat-label>Model Year</mat-label>
+  <input type="text" matInput name="modelYear" required ngModel #modelYear="ngModel" placeholder="optional">
+</mat-form-field>
 
     <mat-form-field appearance="outline">
       <mat-label>Details</mat-label>
