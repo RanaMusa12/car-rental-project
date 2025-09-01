@@ -1,5 +1,5 @@
 mat-card {
-  width: 350px;
+  width: 300px;
   height: auto;
   background-color: white;
   padding: 12px 24px;
@@ -64,7 +64,7 @@ mat-card-content {
 }
 
 img {
-  height: 150px;
+  height: 120px;
   width: 100%;
   object-fit: cover;
   margin: 30px;
